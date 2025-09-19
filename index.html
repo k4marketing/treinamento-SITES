@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K4MARKETING - Venda de Sites</title>
+    <style>
+        :root {
+            --bg-color: #000;
+            --text-color: #fff;
+            --primary: #fbbf24;
+            --secondary: #f97316;
+            --tertiary: #ef4444;
+            --gray-900: #111827;
+            --gray-800: #1f2937;
+            --gray-700: #374151;
+            --green-400: #4ade80;
+            --blue-400: #60a5fa;
+            --purple-400: #c084fc;
+            --red-400: #f87171;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--gray-900);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(251, 191, 36, 0.3);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            margin-right: 0.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+        
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 5rem 0;
+            background: linear-gradient(to right, rgba(17, 24, 39, 0.95), rgba(0, 0, 0, 0.95)), url('https://placehold.co/1920x1080') center/cover;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary), var(--tertiary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #d1d5db;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: #000;
+            box-shadow: 0 4px 6px rgba(251, 191, 36, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 8px rgba(251, 191, 36, 0.4);
+        }
+        
+        .btn-secondary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: #000;
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .section-subtitle {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+        
+        .card {
+            background-color: var(--gray-900);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+        
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .strategy-card {
+            background-color: var(--gray-800);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border: 1px solid var(--gray-700);
+            transition: all 0.3s;
+        }
+        
+        .strategy-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--green-400);
+        }
+        
+        .strategy-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .strategy-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        
+        .green { color: var(--green-400); }
+        .blue { color: var(--blue-400); }
+        .purple { color: var(--purple-400); }
+        .red { color: var(--red-400); }
+        
+        /* Script boxes */
+        .script-box {
+            background-color: var(--gray-800);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border: 1px solid var(--gray-700);
+            position: relative;
+        }
+        
+        .script-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .copy-btn {
+            background-color: var(--green-400);
+            color: #000;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background-color: #34d399;
+            transform: translateY(-2px);
+        }
+        
+        .copy-btn.copied {
+            background-color: #10b981;
+        }
+        
+        .script-content {
+            background-color: #000;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            white-space: pre-line;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: #d1d5db;
+        }
+        
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        
+        th, td {
+            border: 1px solid var(--gray-700);
+            padding: 1rem;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--gray-800);
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        tr:hover {
+            background-color: rgba(31, 41, 55, 0.5);
+        }
+        
+        /* Tip box */
+        .tip-box {
+            background-color: rgba(251, 191, 36, 0.1);
+            border: 1px solid var(--primary);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .warning-box {
+            background-color: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--tertiary);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+        }
+        
+        /* Steps */
+        .steps {
+            margin: 2rem 0;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 2rem;
+            background-color: var(--gray-800);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+        }
+        
+        .step-number {
+            background-color: var(--red-400);
+            color: #000;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--gray-900);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid var(--gray-800);
+        }
+        
+        .footer-content {
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .footer-logo span {
+            margin-right: 0.5rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-top: 2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.25rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo"><span>🚀</span> K4MARKETING</div>
+            <nav>
+                <ul>
+                    <li><a href="#capitulo1">Vendas</a></li>
+                    <li><a href="#estrategia">Prospecção</a></li>
+                    <li><a href="#capitulo2">Pós-Venda</a></li>
+                    <li><a href="#bonus">Bônus</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>VENDA DE SITES</h1>
+            <p>Estratégias comprovadas para prospectar, vender e escalar seu negócio de criação de sites</p>
+            <div class="cta-buttons">
+                <a href="#estrategia" class="btn btn-primary">🎯 Estratégia de Prospecção</a>
+                <a href="#capitulo1" class="btn btn-secondary">💰 Scripts de Venda</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 1 -->
+    <section id="capitulo1">
+        <div class="container">
+            <div class="card">
+                <h2 class="section-title">💰 CAPÍTULO 1</h2>
+                <h3 class="section-subtitle">Como Vender o Site para Clientes</h3>
+                
+                <h3 class="section-subtitle">🎯 Estratégias de prospecção</h3>
+                <div class="strategy-grid">
+                    <div class="strategy-card">
+                        <h4 class="strategy-title green"><span class="strategy-icon">📱</span> WhatsApp (o mais eficaz)</h4>
+                        <div class="script-content">
+                            "Oi [Nome], vi seu Instagram e amei seu trabalho!
+
+Notei que você ainda não tem um site profissional — isso pode estar fazendo você perder clientes que não salvam seu WhatsApp.
+
+Posso criar um site lindo e funcional pra você em 5 dias, por R$ 897 à vista.
+
+Quer ver um exemplo do que faria pra você? 😊"
+                        </div>
+                    </div>
+                    
+                    <div class="strategy-card">
+                        <h4 class="strategy-title blue"><span class="strategy-icon">📸</span> Instagram</h4>
+                        <div class="script-content">
+                            Comente em posts: "Lindo trabalho! Já pensou em ter um site só seu pra receber pedidos direto? Posso te ajudar 😉"
+
+Stories: "Mais um site entregue! 🎉 Dessa vez para a @confeitariaflor — agora ela recebe pedidos 24h! Quer o seu? Me chama!"
+                        </div>
+                    </div>
+                    
+                    <div class="strategy-card">
+                        <h4 class="strategy-title purple"><span class="strategy-icon">🤝</span> Indicações</h4>
+                        <div class="script-content">
+                            "Adorei seu site! Quem fez?" → "Fui eu! 😊 Se conhecer alguém que precisa, manda aqui — dou 10% de desconto pra você!"
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="section-subtitle">💰 Como precificar (3 modelos)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Modelo</th>
+                            <th>Como funciona</th>
+                            <th>Preço sugerido</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong class="green">Preço fixo</strong></td>
+                            <td>Site completo, entrega final</td>
+                            <td>R$ 897 a R$ 2.500</td>
+                        </tr>
+                        <tr>
+                            <td><strong class="blue">Pacotes</strong></td>
+                            <td>Básico (R$ 697), Premium (R$ 1.297), Completo (R$ 1.997)</td>
+                            <td>Crie 3 opções</td>
+                        </tr>
+                        <tr>
+                            <td><strong class="purple">Recorrência</strong></td>
+                            <td>Site + manutenção mensal</td>
+                            <td>R$ 297/mês (site incluso na 1ª mensalidade)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="tip-box">
+                    <strong>💡 Dica:</strong> Ofereça Pix com 10% de desconto — fecha venda mais rápido.
+                </div>
+                
+                <h3 class="section-subtitle">📋 Scripts de vendas (CLIQUE PARA COPIAR!)</h3>
+                
+                <div class="script-box">
+                    <div class="script-header">
+                        <h4 class="strategy-title green"><span class="strategy-icon">📱</span> WhatsApp (primeiro contato)</h4>
+                        <button class="copy-btn" onclick="copyToClipboard('whatsapp1')">Copiar</button>
+                    </div>
+                    <div class="script-content" id="whatsapp1">
+Oi [Nome]! Tudo bem?
+Sou especialista em criar sites lindos e funcionais para [tipo de negócio] — tudo feito com inteligência artificial, então fica pronto em poucos dias e com preço justo.
+Vi seu trabalho e amei! Mas notei que você ainda não tem um site profissional — isso pode estar fazendo você perder clientes que não salvam seu WhatsApp ou não te encontram no Google.
+Posso criar um site completo pra você por R$ 897 à vista (com 10% OFF no Pix).
+Quer ver um exemplo do que faria pra você? É rapidinho 😊
+                    </div>
+                </div>
+                
+                <div class="script-box">
+                    <div class="script-header">
+                        <h4 class="strategy-title blue"><span class="strategy-icon">✉️</span> E-mail (follow-up)</h4>
+                        <button class="copy-btn" onclick="copyToClipboard('email')">Copiar</button>
+                    </div>
+                    <div class="script-content" id="email">
+Assunto: 🎯 Oportunidade para [Nome do Negócio] atrair mais clientes
+
+Olá [Nome],
+
+Me chamo [Seu Nome] e ajudo empreendedores como você a terem um site profissional — sem complicação, sem mensalidade alta, e entregue em até 5 dias.
+
+Imagine:
+- Clientes encontrando você no Google
+- Pedidos entrando 24h por dia (mesmo quando você dorme)
+- Um cartão de visitas digital que impressiona
+
+Posso criar isso pra você por R$ 897 à vista (Pix).
+
+Quer ver um protótipo grátis do que faria pra você? Basta responder "QUERO VER" 😊
+
+Abraços,
+[Seu Nome]
+[Seu WhatsApp]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Strategy Section -->
+    <section id="estrategia" style="background: linear-gradient(to bottom, var(--gray-900), #000);">
+        <div class="container">
+            <div class="card">
+                <h2 class="section-title">🔍 ESTRATÉGIA AVANÇADA</h2>
+                <h3 class="section-subtitle">Como Encontrar Clientes Perfeitos</h3>
+                
+                <h3 class="section-subtitle">🚀 Método Google Maps + Instagram</h3>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h4 class="strategy-title green">Pesquisa no Google Maps</h4>
+                            <p>Pesquise por negócios locais como "odontologia próximos a mim", "confeitaria perto de mim", "salão de beleza na minha região".</p>
+                            <p style="margin-top: 0.5rem;"><strong class="yellow">Dica crucial:</strong> Verifique se o estabelecimento tem um site conectado ao Google Maps. Se não tiver, já é um sinal de que eles estão perdendo oportunidades!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h4 class="strategy-title blue">Verificação nas Redes Sociais</h4>
+                            <p>Acesse o perfil do Instagram do negócio (se estiver disponível no Maps).</p>
+                            <p style="margin-top: 0.5rem;">Verifique se:<br>
+                            • Possuem link para site na bio<br>
+                            • Utilizam ferramentas profissionais de agendamento<br>
+                            • Têm botão de WhatsApp funcionando</p>
+                            <p style="margin-top: 0.5rem;"><strong class="yellow">Se não tiverem nenhum desses elementos, você encontrou um cliente perfeito!</strong></p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h4 class="strategy-title purple">Contato Estratégico</h4>
+                            <div class="script-box" style="margin-top: 1rem;">
+                                <div class="script-header">
+                                    <h5>Script de Contato via WhatsApp/Instagram</h5>
+                                    <button class="copy-btn" onclick="copyToClipboard('googlemaps')">Copiar</button>
+                                </div>
+                                <div class="script-content" id="googlemaps">
+Oi [Nome]! Vi seu estabelecimento no Google Maps e adorei seu trabalho!
+Percebi que você ainda não tem um site profissional conectado — isso pode estar fazendo você perder clientes que buscam serviços como o seu online.
+Sua concorrência já está na web, e os clientes estão cada vez mais digitais. Não fique para trás!
+Posso criar um site moderno e funcional pra você em apenas 5 dias, por R$ 897 à vista (com 10% OFF no Pix).
+Quer ver como ficaria? É rapidinho! 😊
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="warning-box">
+                    <h4 class="strategy-title red"><span class="strategy-icon">⚠️</span> Argumento Poderoso de Venda</h4>
+                    <p>"Sua concorrência está se ingressando na web e investindo em presença digital. Clientes hoje pesquisam online antes de comprar. Se você não estiver lá, eles escolherão seus concorrentes.</p>
+                    <p style="margin-top: 1rem;"><strong style="color: var(--primary);">Não fique para trás neste mercado atual!</strong> Um site profissional é como ter uma vitrine aberta 24h por dia, 7 dias por semana, mostrando seu trabalho para milhares de potenciais clientes."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 2 -->
+    <section id="capitulo2">
+        <div class="container">
+            <div class="card">
+                <h2 class="section-title">📈 CAPÍTULO 2</h2>
+                <h3 class="section-subtitle">Pós-Venda e Escala</h3>
+                
+                <div class="script-box" style="border-left: 4px solid var(--primary);">
+                    <h3 class="strategy-title orange"><span class="strategy-icon">🔧</span> Como oferecer manutenção mensal</h3>
+                    <div class="script-content">
+Seu site está no ar! 🎉 Agora, para manter tudo atualizado, seguro e no topo do Google, ofereço um plano de manutenção por apenas R$ 97/mês. Inclui:
+- Atualizações de conteúdo (textos, fotos)
+- Backup semanal
+- Suporte prioritário por WhatsApp
+- Relatório mensal de visitas
+
+✅ Venda como "seguro do site" — o cliente paga para não ter dor de cabeça.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bonus Section -->
+    <section id="bonus" style="background: linear-gradient(to bottom, #000, var(--gray-900));">
+        <div class="container">
+            <div class="card">
+                <h2 class="section-title">🎁 BÔNUS</h2>
+                <h3 class="section-subtitle">Modelos Prontos + FAQs + Cronograma</h3>
+                
+                <div class="script-box">
+                    <div class="script-header">
+                        <h3 class="strategy-title orange"><span class="strategy-icon">📄</span> MODELO 1: Proposta Simples (CLIQUE PARA COPIAR!)</h3>
+                        <button class="copy-btn" onclick="copyToClipboard('proposal')">Copiar</button>
+                    </div>
+                    <div class="script-content" id="proposal">
+PROPOSTA COMERCIAL
+
+Cliente: [Nome do Cliente]
+Serviço: Criação de Site Profissional
+Prazo: 5 dias úteis após aprovação do conteúdo
+Investimento: R$ 897,00 (à vista via Pix)
+
+O que inclui:
+✅ Design moderno com IA
+✅ 4 páginas (Home, Sobre, Serviços, Contato)
+✅ Botão de WhatsApp + Formulário
+✅ Versão mobile otimizada
+✅ Domínio .com.br incluso
+✅ Hospedagem por 1 ano
+✅ Treinamento de 15min
+✅ Manual de uso
+
+Aceito? Responda "ACEITO" que começo hoje mesmo! 😊
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="background: linear-gradient(to right, rgba(251, 191, 36, 0.1), rgba(249, 115, 22, 0.1)); padding: 4rem 0;">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title">Pronto para começar?</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 2rem; color: #d1d5db;">Use essas estratégias hoje mesmo e comece a vender seus sites com mais eficiência!</p>
+            <div class="card" style="display: inline-block; text-align: left; max-width: 600px;">
+                <p style="font-size: 1.125rem; margin-bottom: 1.5rem; color: #d1d5db;">Lembre-se: cada cliente que você prospecta usando esses métodos é uma oportunidade de negócio real.</p>
+                <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary); animation: pulse 2s infinite;">
+                    💡 Ação gera resultado!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo"><span>🚀</span> K4MARKETING</div>
+            <p style="color: #d1d5db; margin-bottom: 2rem;">Transformando ideias em resultados digitais</p>
+            <div class="footer-links">
+                <a href="#capitulo1">Estratégias de Venda</a>
+                <a href="#estrategia">Prospecção Avançada</a>
+                <a href="#capitulo2">Pós-Venda</a>
+                <a href="#bonus">Modelos Prontos</a>
+            </div>
+            <div class="copyright">© 2024 K4MARKETING. Todos os direitos reservados.</div>
+        </div>
+    </footer>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const button = event.target;
+                button.textContent = 'Copiado! ✅';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = 'Copiar';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Erro ao copiar: ', err);
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animation for pulse effect
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { opacity: 1; }
+                50% { opacity: 0.7; }
+                100% { opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
